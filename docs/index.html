@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="sv-SE">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Värdeökning av Bostadskollen</title>
+</head>
+<body>
+    <div id="container">
+        <header>
+            <h1>Värdeökning</h1>
+            <h2>av Bostadskollen</h2>
+        </header>
+        <form id="input-form">
+            <label for="input-price">Inköpspris:</label>
+            <input type="text" id="input-price" placeholder="pris">
+            <br>
+            <label for="input-area">Bostadsarea:</label>
+            <input type="text" id="input-size" placeholder="m²">
+            <br>
+            <label for="input-rooms">Antal rum:</label>
+            <input type="text" id="input-rooms" placeholder="rum">
+            <br>
+            <label for="input-rooms">Område:</label>
+            <input type="text" id="input-place" placeholder="postnummer">
+        </form>
+        <div id="result-box">
+            <h3>Beräknad värdeökning</h3>
+            <div id="result-switch">&#128480;</div>
+            <div id="result-table">
+                <!-- Testtabell, tas bort efter att css är gjord -->
+                <table>
+                    <tr>
+                        <td>2019</td>
+                        <td>X XXX XXX</td>
+                    </tr>
+                    <tr>
+                        <td>2020</td>
+                        <td>X XXX XXX</td>
+                    </tr>
+                    <tr>
+                        <td>2021</td>
+                        <td>X XXX XXX</td>
+                    </tr>
+                    <tr>
+                        <td>2022</td>
+                        <td>X XXX XXX</td>
+                    </tr>
+                    <tr>
+                        <td>2023</td>
+                        <td>X XXX XXX</td>
+                    </tr>
+                </table>
+                <!-- Testtabell ends -->
+            </div>
+            <div id="result-chart">
+                <canvas id="result-canvas"></canvas>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
