@@ -155,6 +155,25 @@ header h2 {
   border-color: #E8A87C;
 }
 
+#input-form select {
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
+}
+
+#input-form .select-wrapper {
+  position: relative;
+}
+
+#input-form .select-wrapper::after {
+  content: '▼';
+  font-size: 0.6em;
+  top: 1.15em;
+  right: 1.5em;
+  position: absolute;
+  pointer-events: none;
+}
+
 #input-form button {
   font-weight: bold;
   cursor: pointer;
@@ -315,6 +334,7 @@ header h2 {
         -ms-flex-pack: center;
             justify-content: center;
     padding-left: 30px;
+    margin-left: -1px;
     width: 100%;
     height: 100%;
     border-left: 3px dotted #C38D9E;
