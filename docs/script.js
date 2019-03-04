@@ -7,10 +7,13 @@ const house = document.querySelector('#result-house');
 
 document.querySelector('form').addEventListener('submit',e => {
     e.preventDefault();
+    house.classList.add('result-hide');
     resultHeader.classList.remove('result-hide');
     table.classList.remove('result-hide');
+    if (window.innerWidth < 1000) 
     resultSwitch.classList.remove('result-hide');
-    house.classList.add('result-hide');
+    if (window.innerWidth >= 1000) chart.classList.remove('result-hide');
+    
 });
 
 resultSwitch.addEventListener('click',e => {
