@@ -1,0 +1,212 @@
+// Variables
+$pink: #C38D9E;
+$light-orange: #E8A87C;
+$dark-orange: #E27D60;
+$light-green: #85DCBB;
+$dark-green: #41B3A3;
+
+$padding: 10px;
+
+// Mixins
+// Border, usage: border(top/bottom/both/none, left/right/both/none, color, width)
+@mixin border($vertical:none,$horizontal:none,$color: $pink,$width:10px) {
+    @if $vertical == both and $horizontal == both { border: $width solid $color; }
+    @else {
+        @if $vertical == top { border-top: $width solid $color; }
+        @else if $vertical == bottom { border-bottom: $width solid $color; }
+        @else if $vertical == both { border-top: $width solid $color; border-bottom: $width solid $color; }       
+        
+        @if $horizontal == left { border-left: $width solid $color; }
+        @else if $horizontal == right { border-right: $width solid $color; }
+        @else if $horizontal == both { border-left: $width solid $color; border-right: $width solid $color; }
+    }
+}
+
+/* GENERAL / MOBILE */
+* { box-sizing: border-box; }
+
+@font-face {
+    font-family: Vivaldi;
+    src: url(fonts/vivaldi.ttf);
+}
+
+@font-face {
+    font-family: Freestyle Script;
+    src: url(fonts/freestylescript.ttf);
+}
+
+body {
+    display: flex;
+    margin: 0;
+    padding: 0;
+    font-family: Verdana;
+    font-size: 1em;
+    color: $dark-orange;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background: linear-gradient(rgba(0,0,0,0.5),rgba(0,0,0,0.5)), url(images/background.jpg) center/cover no-repeat fixed;
+}
+
+#container {
+    background-color: $light-green; 
+    width: 100vw;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+}
+
+hr { 
+    border: 0;
+    border-bottom: 3px dotted $pink;
+    padding-top: $padding;
+    margin: 0;
+}
+
+header,#input-form,#result-box {
+    padding: $padding $padding 0 $padding;
+}
+
+/* Logo */
+header {
+    text-align: center;
+    @include border(none,both);
+    h1,h2 { 
+        font-weight: normal; 
+        margin: 0px;
+        line-height: 0.9em;
+    }
+    h1 {
+        font-family: Vivaldi;
+        font-size: 3.8em;
+        color: $pink;
+        margin-left: -0.2em;
+        margin-top: 5px;
+    }
+    h2 { 
+        font-family: Freestyle Script;
+        font-size: 2.5em;
+        color: $dark-green;
+    }
+}
+
+/* Formulär */
+#input-form {
+    @include border(none,both,$light-orange)
+    display: grid; 
+    grid-template-columns: 1fr 1fr;
+    justify-content: center;
+    align-items: center;
+    gap: $padding;
+    br { display: none; }
+    button, hr { grid-column: 1/3; }
+    input, select, button {
+        outline: 0;
+        border: 2px solid $dark-green;
+        border-radius: 10px;
+        padding: calc(#{$padding} / 2) $padding ;
+        width: 100%;
+        font-size: 1em;
+        background-color: $dark-green;
+        color: $light-orange;
+        &::placeholder { 
+            color: $light-green; 
+            font-style: italic;
+        }
+        &:focus { border-color: $light-orange; }
+        &:hover { border-color: $light-orange; }
+    }
+    button { 
+        font-weight: bold; 
+        cursor: pointer;
+    }
+}
+
+/* Resultat */
+#result-box {
+    @include border(none,both,$dark-orange);
+    flex: 1;
+    #result-house { 
+        opacity: 0.5; 
+        padding: 25px;
+        @media(min-width: 500px) { padding: 100px; }
+        width: 100%;
+    }
+    h3 {
+        float: left;
+        font-size: 1em; 
+        font-weight: normal;
+        margin: $padding 0;
+    }
+    #result-switch {
+        float: right;
+        text-align: center;
+        background-color: $dark-green;
+        width: 2em;
+        height: 2em;
+        padding: calc(#{$padding}/2);
+        margin-top: 0.2em;
+        margin-bottom: 1em;
+        border-radius: 10px;
+        cursor: pointer;
+    }
+    #result-table {
+        table {
+            width: 100%;
+            margin-top: $padding;
+            border-spacing: 0;
+            tr:first-child td:first-child { border-top-left-radius: 10px; }
+            tr:first-child td:last-child { border-top-right-radius: 10px;}
+            tr:last-child td:first-child { border-bottom-left-radius: 10px;}
+            tr:last-child td:last-child { border-bottom-right-radius: 10px;}
+            tr:nth-child(odd) td { background-color: rgba(65, 179, 163,0.5); }
+            td { padding: calc(#{$padding} / 2) $padding; }
+            td:last-child { text-align: right; }
+        }
+    }
+    #result-chart { width: 100%; }
+}
+.result-hide { display: none; }
+
+/* DESKTOP */
+@media(min-width: 1000px) {
+    body { padding: 50px; }
+    #container {
+        min-height: 0;
+        max-width: 1200px;
+        display: grid;
+        grid-template-rows: 1fr 1fr;
+        grid-template-columns: 1fr 1fr;
+        grid-auto-flow: column;
+    }   
+    header,#input-form, #result-box { border: 0; padding: 30px; }
+    header { 
+        display: flex;
+        flex-direction: column;
+        padding-top: 4em;
+        padding-bottom: 0;
+        @include border(top,left,$pink,20px)
+        h1 { font-size: 5em; }
+        h2 { font-size: 3.7em; }
+        hr { flex-grow: 1; }
+    }  
+    #input-form {
+        @include border(bottom,left,$light-orange,20px);
+        hr { display: none; }
+    }
+    #result-box {
+        grid-row: 1 / 3;
+        padding-left: 0;
+        @include border(both,right,$dark-orange,20px);
+        #result-inner-box {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding-left: 30px;
+            width: 100%;
+            height: 100%;
+            border-left: 3px dotted $pink;
+        }
+    }
+}
