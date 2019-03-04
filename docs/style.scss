@@ -117,6 +117,18 @@ header {
         &:focus { border-color: $light-orange; }
         &:hover { border-color: $light-orange; }
     }
+    select { appearance: none; }
+    .select-wrapper {
+        position: relative;
+        &::after {
+            content: '▼';
+            font-size: 0.6em;
+            top: 1.15em;
+            right: 1.5em;
+            position: absolute;
+            pointer-events: none;
+        }
+    }
     button { 
         font-weight: bold; 
         cursor: pointer;
@@ -204,6 +216,7 @@ header {
             flex-direction: column;
             justify-content: center;
             padding-left: 30px;
+            margin-left: -1px;
             width: 100%;
             height: 100%;
             border-left: 3px dotted $pink;
