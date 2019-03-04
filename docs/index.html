@@ -4,59 +4,80 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Värdeökning av Bostadskollen</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <div id="container">
         <header>
             <h1>Värdeökning</h1>
-            <h2>av Bostadskollen</h2>
+            <h2>av&nbsp;Bostadskollen</h2>
+            <hr>
         </header>
         <form id="input-form">
             <label for="input-price">Inköpspris:</label>
             <input type="text" id="input-price" placeholder="pris">
             <br>
-            <label for="input-area">Bostadsarea:</label>
+            <label for="input-size">Bostadsarea:</label>
             <input type="text" id="input-size" placeholder="m²">
             <br>
             <label for="input-rooms">Antal rum:</label>
-            <input type="text" id="input-rooms" placeholder="rum">
+            <select id="input-rooms">
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+            </select>
             <br>
-            <label for="input-rooms">Område:</label>
-            <input type="text" id="input-place" placeholder="postnummer">
+            <label for="input-place">Område:</label>
+            <select id="input-place">
+                <option value="11122">111 22</option>
+                <option value="22222">222 22</option>
+                <option value="33333">333 33</option>
+            </select>
+            <br>
+            <button type="submit" id="input-submit">Beräkna</button>
+            <hr>
         </form>
         <div id="result-box">
-            <h3>Beräknad värdeökning</h3>
-            <div id="result-switch">&#128480;</div>
-            <div id="result-table">
-                <!-- Testtabell, tas bort efter att css är gjord -->
-                <table>
-                    <tr>
-                        <td>2019</td>
-                        <td>X XXX XXX</td>
-                    </tr>
-                    <tr>
-                        <td>2020</td>
-                        <td>X XXX XXX</td>
-                    </tr>
-                    <tr>
-                        <td>2021</td>
-                        <td>X XXX XXX</td>
-                    </tr>
-                    <tr>
-                        <td>2022</td>
-                        <td>X XXX XXX</td>
-                    </tr>
-                    <tr>
-                        <td>2023</td>
-                        <td>X XXX XXX</td>
-                    </tr>
-                </table>
-                <!-- Testtabell ends -->
-            </div>
-            <div id="result-chart">
-                <canvas id="result-canvas"></canvas>
+            <div id="result-inner-box">
+                <h3 class="result-hide">Beräknad värdeökning</h3>
+                <div id="result-switch" class="result-hide">&#128480;</div>
+                <div id="result-table" class="result-hide">
+                    <!-- Testtabell, tas bort efter att css är gjord -->
+                    <table>
+                        <tr>
+                            <td>2019</td>
+                            <td>X XXX XXX</td>
+                        </tr>
+                        <tr>
+                            <td>2020</td>
+                            <td>X XXX XXX</td>
+                        </tr>
+                        <tr>
+                            <td>2021</td>
+                            <td>X XXX XXX</td>
+                        </tr>
+                        <tr>
+                            <td>2022</td>
+                            <td>X XXX XXX</td>
+                        </tr>
+                        <tr>
+                            <td>2023</td>
+                            <td>X XXX XXX</td>
+                        </tr>
+                        <tr>
+                            <td>2023</td>
+                            <td>X XXX XXX</td>
+                        </tr>
+                    </table>
+                    <!-- Testtabell ends -->
+                </div>
+                <canvas id="result-chart" class="result-hide"></canvas>
+                <img src="images/money-house.svg" alt="Hus med dollartecken" id="result-house">
             </div>
         </div>
     </div>
+    <script src="script.js"></script>
 </body>
 </html>
