@@ -46,6 +46,8 @@ function displayResults(e) {
         resultTable.innerHTML = '';
         resultTable.appendChild(table);
         toggleResults();
+        // Rensa formulär
+        inputForm.reset();
     }
 }
 
