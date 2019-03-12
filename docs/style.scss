@@ -99,6 +99,11 @@ header {
     justify-content: center;
     align-items: center;
     gap: $padding;
+    #input-error { 
+        grid-column: 1 / span 2; 
+        color: #f00;
+        text-align: right;
+    }
     br { display: none; }
     button, hr { grid-column: 1/3; }
     input, select, button {
