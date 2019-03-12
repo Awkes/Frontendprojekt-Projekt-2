@@ -14,11 +14,12 @@
             <hr>
         </header>
         <form id="input-form">
+            <div id="input-error"></div>
             <label for="input-price">Inköpspris:</label>
-            <input type="text" id="input-price" placeholder="pris">
+            <input type="number" id="input-price" placeholder="pris" min="1" max="100000000">
             <br>
             <label for="input-size">Bostadsarea:</label>
-            <input type="text" id="input-size" placeholder="m²">
+            <input type="number" id="input-size" placeholder="m²" min="1" max="1000" step="0.1">
             <br>
             <label for="input-rooms">Antal rum:</label>
             <div class="select-wrapper">
@@ -48,34 +49,6 @@
                 <h3 class="result-hide">Beräknad värdeökning</h3>
                 <div id="result-switch" class="result-hide">&#128480;</div>
                 <div id="result-table" class="result-hide">
-                    <!-- Testtabell, tas bort efter att css är gjord -->
-                    <table>
-                        <tr>
-                            <td>2019</td>
-                            <td>X XXX XXX</td>
-                        </tr>
-                        <tr>
-                            <td>2020</td>
-                            <td>X XXX XXX</td>
-                        </tr>
-                        <tr>
-                            <td>2021</td>
-                            <td>X XXX XXX</td>
-                        </tr>
-                        <tr>
-                            <td>2022</td>
-                            <td>X XXX XXX</td>
-                        </tr>
-                        <tr>
-                            <td>2023</td>
-                            <td>X XXX XXX</td>
-                        </tr>
-                        <tr>
-                            <td>2023</td>
-                            <td>X XXX XXX</td>
-                        </tr>
-                    </table>
-                    <!-- Testtabell ends -->
                 </div>
                 <canvas id="result-chart" class="result-hide"></canvas>
                 <img src="images/money-house.svg" alt="Hus med dollartecken" id="result-house">
