@@ -6,12 +6,12 @@
 }
 
 @font-face {
-  font-family: Vivaldi;
+  font-family: 'Vivaldi';
   src: url(fonts/vivaldi.ttf);
 }
 
 @font-face {
-  font-family: Freestyle Script;
+  font-family: 'Freestyle Script';
   src: url(fonts/freestylescript.ttf);
 }
 
@@ -21,7 +21,7 @@ body {
   display: flex;
   margin: 0;
   padding: 0;
-  font-family: Verdana;
+  font-family: 'Verdana';
   font-size: 1em;
   color: #E27D60;
   -webkit-box-pack: center;
@@ -76,7 +76,7 @@ header h1, header h2 {
 }
 
 header h1 {
-  font-family: Vivaldi;
+  font-family: 'Vivaldi';
   font-size: 3.8em;
   color: #C38D9E;
   margin-left: -0.2em;
@@ -84,7 +84,7 @@ header h1 {
 }
 
 header h2 {
-  font-family: Freestyle Script;
+  font-family: 'Freestyle Script';
   font-size: 2.5em;
   color: #41B3A3;
 }
@@ -163,6 +163,14 @@ header h2 {
   border-color: #E8A87C;
 }
 
+#input-form input {
+  -moz-appearance: textfield;
+}
+
+#input-form input::-webkit-outer-spin-button, #input-form input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+}
+
 #input-form select {
   -webkit-appearance: none;
      -moz-appearance: none;
@@ -209,28 +217,15 @@ header h2 {
 }
 
 #result-box h3 {
-  float: left;
   font-size: 1em;
   font-weight: normal;
   margin: 10px 0;
 }
 
-#result-box #result-switch {
-  float: right;
-  text-align: center;
-  background-color: #41B3A3;
-  width: 2em;
-  height: 2em;
-  padding: calc(10px/2);
-  margin-top: 0.2em;
-  margin-bottom: 1em;
-  border-radius: 10px;
-  cursor: pointer;
-}
-
 #result-box #result-table table {
   width: 100%;
   margin-top: 10px;
+  margin-bottom: 20px;
   border-spacing: 0;
 }
 
@@ -262,8 +257,10 @@ header h2 {
   text-align: right;
 }
 
-#result-box #result-chart {
+#result-box #result-chart-wrapper {
   width: 100%;
+  height: 100%;
+  min-height: 250px;
 }
 
 .result-hide {
