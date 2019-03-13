@@ -16,10 +16,10 @@
         <form id="input-form">
             <div id="input-error"></div>
             <label for="input-price">Inköpspris:</label>
-            <input type="number" id="input-price" placeholder="pris" min="1" max="100000000">
+            <input type="number" id="input-price" placeholder="pris" min="1" max="99999999">
             <br>
             <label for="input-size">Bostadsarea:</label>
-            <input type="number" id="input-size" placeholder="m²" min="1" max="1000" step="0.1">
+            <input type="number" id="input-size" placeholder="m²" min="1" max="999" step="0.1">
             <br>
             <label for="input-rooms">Antal rum:</label>
             <div class="select-wrapper">
@@ -47,10 +47,10 @@
         <div id="result-box">
             <div id="result-inner-box">
                 <h3 class="result-hide">Beräknad värdeökning</h3>
-                <div id="result-switch" class="result-hide">&#128480;</div>
-                <div id="result-table" class="result-hide">
+                <div id="result-table" class="result-hide"></div>
+                <div id="result-chart-wrapper" class="result-hide">
+                    <canvas id="result-chart"></canvas>
                 </div>
-                <canvas id="result-chart" class="result-hide"></canvas>
                 <img src="images/money-house.svg" alt="Hus med dollartecken" id="result-house">
             </div>
         </div>

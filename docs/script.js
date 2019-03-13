@@ -1,3 +1,5 @@
+/* Värdeökning av Bostadskollen */
+
 // Hämta nödvändiga element
 const inputForm = document.querySelector('#input-form');
 const inputPrice = document.querySelector('#input-price');
@@ -6,7 +8,7 @@ const inputPlace = document.querySelector('#input-place');
 const inputError = document.querySelector('#input-error');
 const resultTable = document.querySelector('#result-table');
 const resultHeader = document.querySelector('#result-box h3');
-const resultSwitch = document.querySelector('#result-switch');
+const resultChartWrapper = document.querySelector('#result-chart-wrapper');
 const resultChart = document.querySelector('#result-chart');
 const resultHouse = document.querySelector('#result-house');
 
@@ -42,12 +44,62 @@ function displayResults(e) {
             tr.appendChild(tdPrice);
             table.appendChild(tr);
         }
-        // Skriv ut och visa tabell
+        // Skriv ut tabell, visa resultatet och rita diagram
         resultTable.innerHTML = '';
         resultTable.appendChild(table);
         toggleResults();
+        drawChart(prices);
         // Rensa formulär
         inputForm.reset();
+    }
+}
+
+// Funktion som ritar ut diagram
+function drawChart(prices) {
+    const canvas = resultChart;
+    // Ändra storlek och förbered canvas för att rita ut diagram
+    canvas.width = resultChartWrapper.clientWidth;
+    canvas.height = resultChartWrapper.clientHeight;
+    const w = canvas.width;
+    const h = canvas.height;
+    const ctx = canvas.getContext('2d');
+    // Rita ut bakgrund och vertikal/horizontal linje
+    drawLine(2,((h-40)/2)+20,w,((h-40)/2)+20,'rgba(65, 179, 163,0.5)',h-40);
+    drawLine(0,20,0,h-20,'#E27D60',2);
+    drawLine(0,h-20,w,h-20,'#E27D60',2);
+    // Rita ut streck, punkter, pris och årtal
+    let posX = 15;
+    let posY = h-20;
+    let newX = 15;
+    let newY = 0;
+    let scale = (h-40) / (prices[prices.length-1] - prices[0]);
+    let year = (new Date).getFullYear();
+    for (let i=0; i <= 5; i++) {
+        newX += (w-30)/5;
+        newY = h-20-((prices[i+1]-prices[0]) * scale);
+        if (newY !== posY) drawLine(posX,posY,newX,newY,'#E27D60',2);
+        drawLine(posX,posY,posX,posY,'#E27D60',10);
+        drawText(prices[i],posX+10,posY+10)
+        drawText(year,posX-15,h);
+        posX = newX;
+        posY = newY;
+        year++;
+    }   
+    // Funktion för att rita ut linjer
+    function drawLine(startX,startY,endX,endY,color='#000',size=1) {
+        ctx.strokeStyle = color;
+        ctx.lineCap = 'round';
+        ctx.lineWidth = size;
+        ctx.beginPath();
+        ctx.moveTo(startX,startY);
+        ctx.lineTo(endX,endY);
+        ctx.stroke();
+    }
+    // Funktion för att skriva ut text
+    function drawText(text,x,y) {
+        ctx.fillStyle = '#E27D60';
+        ctx.font = "10px Verdana";
+        ctx.fillText(text,x,y);
     }
 }
 
@@ -78,9 +130,7 @@ function toggleResults() {
     resultHouse.classList.add('result-hide');
     resultHeader.classList.remove('result-hide');
     resultTable.classList.remove('result-hide');
-    // Visa toggle för tabell/diagram om man surfar med låg upplösning
-    if (window.innerWidth < 1000) resultSwitch.classList.remove('result-hide');
-    else if (window.innerWidth >= 1000) resultChart.classList.remove('result-hide');
+    resultChartWrapper.classList.remove('result-hide');
 }
 
 // Funktion som räknar ut procentuell ökning per år och returnerar ett medelvärde på årlig ökning i procent (decimalform)
@@ -104,18 +154,3 @@ function calcIncrease(price,area,percent) {
     }
     return prices;
 }
-
-
-
-
-/*
-Gammalt
--------
-
-resultSwitch.addEventListener('click',e => {
-    console.log(e.target.innerHTML)
-    e.target.innerHTML = (e.target.innerHTML == '🗠') ? '&#9776;' : '&#128480;';
-    table.classList.toggle('result-hide');
-    chart.classList.toggle('result-hide');
-});
-*/
