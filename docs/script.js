@@ -67,7 +67,7 @@ function drawChart(prices) {
     drawLine(2,((h-40)/2)+20,w,((h-40)/2)+20,'rgba(65, 179, 163,0.5)',h-40);
     drawLine(0,20,0,h-20,'#E27D60',2);
     drawLine(0,h-20,w,h-20,'#E27D60',2);
-    // Rita ut streck, punkter och årtal
+    // Rita ut streck, punkter, pris och årtal
     let posX = 15;
     let posY = h-20;
     let newX = 15;
@@ -79,6 +79,7 @@ function drawChart(prices) {
         newY = h-20-((prices[i+1]-prices[0]) * scale);
         if (newY !== posY) drawLine(posX,posY,newX,newY,'#E27D60',2);
         drawLine(posX,posY,posX,posY,'#E27D60',10);
+        drawText(prices[i],posX+10,posY+10)
         drawText(year,posX-15,h);
         posX = newX;
         posY = newY;
