@@ -9,6 +9,7 @@ $padding: 10px;
 
 // Mixins
 // Border, usage: border(top/bottom/both/none, left/right/both/none, color, width)
+// Används för att skapa borders
 @mixin border($vertical:none,$horizontal:none,$color: $pink,$width:10px) {
     @if $vertical == both and $horizontal == both { border: $width solid $color; }
     @else {
@@ -26,12 +27,12 @@ $padding: 10px;
 * { box-sizing: border-box; }
 
 @font-face {
-    font-family: Vivaldi;
+    font-family: 'Vivaldi';
     src: url(fonts/vivaldi.ttf);
 }
 
 @font-face {
-    font-family: Freestyle Script;
+    font-family: 'Freestyle Script';
     src: url(fonts/freestylescript.ttf);
 }
 
@@ -39,7 +40,7 @@ body {
     display: flex;
     margin: 0;
     padding: 0;
-    font-family: Verdana;
+    font-family: 'Verdana';
     font-size: 1em;
     color: $dark-orange;
     justify-content: center;
@@ -78,14 +79,14 @@ header {
         line-height: 0.9em;
     }
     h1 {
-        font-family: Vivaldi;
+        font-family: 'Vivaldi';
         font-size: 3.8em;
         color: $pink;
         margin-left: -0.2em;
         margin-top: 5px;
     }
     h2 { 
-        font-family: Freestyle Script;
+        font-family: 'Freestyle Script';
         font-size: 2.5em;
         color: $dark-green;
     }
@@ -121,6 +122,12 @@ header {
         }
         &:focus { border-color: $light-orange; }
         &:hover { border-color: $light-orange; }
+    }
+    input { 
+        -moz-appearance: textfield; 
+        &::-webkit-outer-spin-button,&::-webkit-inner-spin-button {
+            -webkit-appearance: none;
+        }
     }
     select { appearance: none; }
     .select-wrapper {

@@ -6,12 +6,12 @@
 }
 
 @font-face {
-  font-family: Vivaldi;
+  font-family: 'Vivaldi';
   src: url(fonts/vivaldi.ttf);
 }
 
 @font-face {
-  font-family: Freestyle Script;
+  font-family: 'Freestyle Script';
   src: url(fonts/freestylescript.ttf);
 }
 
@@ -21,7 +21,7 @@ body {
   display: flex;
   margin: 0;
   padding: 0;
-  font-family: Verdana;
+  font-family: 'Verdana';
   font-size: 1em;
   color: #E27D60;
   -webkit-box-pack: center;
@@ -76,7 +76,7 @@ header h1, header h2 {
 }
 
 header h1 {
-  font-family: Vivaldi;
+  font-family: 'Vivaldi';
   font-size: 3.8em;
   color: #C38D9E;
   margin-left: -0.2em;
@@ -84,7 +84,7 @@ header h1 {
 }
 
 header h2 {
-  font-family: Freestyle Script;
+  font-family: 'Freestyle Script';
   font-size: 2.5em;
   color: #41B3A3;
 }
@@ -161,6 +161,14 @@ header h2 {
 
 #input-form input:hover, #input-form select:hover, #input-form button:hover {
   border-color: #E8A87C;
+}
+
+#input-form input {
+  -moz-appearance: textfield;
+}
+
+#input-form input::-webkit-outer-spin-button, #input-form input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
 }
 
 #input-form select {
